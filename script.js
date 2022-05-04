@@ -57,3 +57,51 @@ function ask() {
     alert('Вы согласились стать президентом.');
   else alert('Вы отказались стать президентом.');
 }
+// управление объектами DOM
+
+function showHeight() {
+  alert('Высота страницы составляет ' + window.innerHeight + ' пикселей');
+}
+
+function changeBCG() {
+  // заменим цвет фона на красный,
+  document.body.style.background = 'red';
+
+  // а через секунду вернём как было
+  setTimeout(() => (document.body.style.background = ''), 1000);
+}
+
+function platformData() {
+  alert(
+    'Браузер ' +
+      navigator.userAgent +
+      ' запущен на платформе ' +
+      navigator.platform
+  );
+}
+
+function linkRef() {
+  alert('Текущий адрес страницы: ' + location.href); // показывает текущий URL
+  if (confirm('Перейти на Wikipedia?')) {
+    location.href = 'https://wikipedia.org'; // перенаправляет браузер на другой URL
+  }
+}
+
+function showNodes() {
+  let findNode = prompt('Какого типа узел вы хотите найти?', 8);
+  for (let node of document.body.childNodes) {
+    if (node.nodeType == findNode) return alert(node.nodeName);
+  }
+}
+
+function redactTable() {
+  let table = document.getElementById('tabl');
+  let changeColor = function (color) {
+    for (let i = 0; i < table.rows.length; i++) {
+      let row = table.rows[i];
+      row.cells[i].style.backgroundColor = color;
+    }
+  };
+  changeColor('red');
+  setTimeout(() => changeColor(''), 2000);
+}
